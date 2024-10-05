@@ -29,6 +29,7 @@ import {FoodmenuListComponent} from "./component/foodmenu-list/foodmenu-list.com
 import {GroceryListComponent} from "./component/grocery-list/grocery-list.component";
 import {ClassroomListComponent} from "./component/classroom-list/classroom-list.component";
 import {InventoryListComponent} from "./component/inventory-list/inventory-list.component";
+import {LecturelistComponent} from "./component/lecturelist/lecturelist.component";
 
 
 const routes: Routes = [
@@ -56,6 +57,7 @@ const routes: Routes = [
   {path: 'grocerylist', component: GroceryListComponent},
   {path: 'classroomlist', component: ClassroomListComponent},
   {path: 'inventorylist', component: InventoryListComponent},
+  {path: 'lecturelist', component: LecturelistComponent},
 
 
 
@@ -97,6 +99,7 @@ const routes: Routes = [
     GroceryListComponent,
     ClassroomListComponent,
     InventoryListComponent,
+    LecturelistComponent,
     ],
   providers: [
 
