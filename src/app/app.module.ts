@@ -12,6 +12,7 @@ import {CourseListComponent} from "./component/course-list/course-list.component
 import {BookListComponent} from "./component/book-list/book-list.component";
 import {CityListComponent} from "./component/city-list/city-list.component";
 import {MovielistComponent} from "./component/movielist/movielist.component";
+import {CarmodelListComponent} from "./component/carmodel-list/carmodel-list.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'booklist', component: BookListComponent},
   {path: 'citylist', component: CityListComponent},
   {path: 'movielist', component: MovielistComponent},
+  {path: 'carmodellist', component: CarmodelListComponent},
 
   ]
 
@@ -43,6 +45,7 @@ const routes: Routes = [
     BookListComponent,
     CityListComponent,
     MovielistComponent,
+    CarmodelListComponent,
     ],
   providers: [
 
