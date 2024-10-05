@@ -1,0 +1,14 @@
+<div class="software-container">
+  <h2>Software List</h2>
+
+  <input
+    type="text"
+    [(ngModel)]="newSoftware"
+    placeholder="Add new software"
+  />
+  <button (click)="addSoftware()">Add</button>
+
+  <ul>
+    <li *ngFor="let software of softwareList">{{ software }}</li>
+  </ul>
+</div>
