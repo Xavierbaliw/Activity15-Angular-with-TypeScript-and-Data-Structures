@@ -1,0 +1,14 @@
+
+<div>
+  <h2>Campus Building List</h2>
+
+  <input [(ngModel)]="newBuilding" placeholder="Add new building" />
+  <button (click)="addBuilding()">Add Building</button>
+
+  <ul>
+    <li *ngFor="let building of buildings; let i = index">
+      {{ building }}
+      <button (click)="removeBuilding(i)">Remove</button>
+    </li>
+  </ul>
+</div>
