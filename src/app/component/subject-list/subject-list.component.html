@@ -1,0 +1,15 @@
+<div class="subject-list-container">
+  <h2>Subject List</h2>
+
+  <input
+    type="text"
+    [(ngModel)]="newSubject"
+    placeholder="Enter a new subject"
+    (keyup.enter)="addSubject()"
+  />
+  <button (click)="addSubject()">Add Subject</button>
+
+  <ul>
+    <li *ngFor="let subject of getSubjects()">{{ subject }}</li>
+  </ul>
+</div>
