@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './carmodel-list.component.css'
 })
 export class CarmodelListComponent {
-  carModels: string[] = [];
+  carModels: string[] = ['Toyota','VIOS'];
   newCarModel: string = '';
 
   addCarModel() {
@@ -14,5 +14,8 @@ export class CarmodelListComponent {
       this.carModels.push(this.newCarModel.trim());
       this.newCarModel = '';
     }
+  }
+  removeItem(index: number) {
+    this.carModels.splice(index, 1);
   }
 }

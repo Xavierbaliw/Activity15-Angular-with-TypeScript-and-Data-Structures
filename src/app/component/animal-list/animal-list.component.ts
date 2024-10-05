@@ -15,4 +15,7 @@ export class AnimalListComponent {
       this.newAnimal = '';
     }
   }
+  removeItem(index: number) {
+    this.animals.splice(index, 1);
+  }
 }

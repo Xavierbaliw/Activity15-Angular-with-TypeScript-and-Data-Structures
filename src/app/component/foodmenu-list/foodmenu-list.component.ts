@@ -22,4 +22,7 @@ export class FoodmenuListComponent {
       alert('Please enter a valid food item.');
     }
   }
+  removeItem(index: number) {
+    this.foodMenu.splice(index, 1);
+  }
 }

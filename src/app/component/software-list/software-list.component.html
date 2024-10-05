@@ -9,6 +9,9 @@
   <button (click)="addSoftware()">Add</button>
 
   <ul>
-    <li *ngFor="let software of softwareList">{{ software }}</li>
+    <li *ngFor="let item of softwareList; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 </div>

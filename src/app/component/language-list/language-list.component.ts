@@ -15,4 +15,7 @@ export class LanguageListComponent {
       this.newLanguage = '';
     }
   }
+  removeItem(index: number) {
+    this.languages.splice(index, 1);
+  }
 }

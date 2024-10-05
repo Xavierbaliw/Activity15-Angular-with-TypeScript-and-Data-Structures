@@ -1,7 +1,10 @@
 <div>
   <h2>Sports List</h2>
   <ul>
-    <li *ngFor="let sport of getSports()">{{ sport }}</li>
+    <li *ngFor="let item of sports; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 
   <input

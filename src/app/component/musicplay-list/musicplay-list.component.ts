@@ -21,4 +21,7 @@ export class MusicplayListComponent {
   getSongs() {
     return this.playlist;
   }
+  removeItem(index: number) {
+    this.playlist.splice(index, 1);
+  }
 }

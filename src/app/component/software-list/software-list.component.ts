@@ -18,4 +18,7 @@ export class SoftwareListComponent {
       this.newSoftware = '';
     }
   }
+  removeItem(index: number) {
+    this.softwareList.splice(index, 1);
+  }
 }

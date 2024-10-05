@@ -22,4 +22,7 @@ export class MovielistComponent {
   getMovies(): string[] {
     return this.movies;
   }
+  removeItem(index: number) {
+    this.movies.splice(index, 1);
+  }
 }

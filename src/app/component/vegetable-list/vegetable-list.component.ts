@@ -15,4 +15,7 @@ export class VegetableListComponent {
       this.newVegetable = '';  // Clear the input after adding
     }
   }
+  removeItem(index: number) {
+    this.vegetables.splice(index, 1);
+  }
 }

@@ -24,4 +24,7 @@ export class GameListComponent {
       alert('Please enter a game title.');
     }
   }
+  removeItem(index: number) {
+    this.games.splice(index, 1);
+  }
 }

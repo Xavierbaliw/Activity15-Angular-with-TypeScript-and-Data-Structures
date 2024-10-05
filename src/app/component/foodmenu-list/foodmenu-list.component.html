@@ -8,6 +8,9 @@
 
   <h2>Current Menu:</h2>
   <ul>
-    <li *ngFor="let item of foodMenu">{{ item }}</li>
+    <li *ngFor="let item of foodMenu; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 </div>

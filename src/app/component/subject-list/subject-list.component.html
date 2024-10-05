@@ -10,6 +10,9 @@
   <button (click)="addSubject()">Add Subject</button>
 
   <ul>
-    <li *ngFor="let subject of getSubjects()">{{ subject }}</li>
+    <li *ngFor="let item of subjects; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 </div>

@@ -21,4 +21,7 @@ export class BookListComponent {
   getBooks(): string[] {
     return this.books;
   }
+  removeItem(index: number) {
+    this.books.splice(index, 1);
+  }
 }

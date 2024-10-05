@@ -7,8 +7,10 @@
   />
   <button (click)="addBook()">Add Book</button>
 
-  <h3>Books:</h3>
   <ul>
-    <li *ngFor="let book of getBooks()">{{ book }}</li>
+    <li *ngFor="let item of books; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 </div>

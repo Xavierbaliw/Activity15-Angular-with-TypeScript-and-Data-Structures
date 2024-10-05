@@ -5,6 +5,10 @@
   <button (click)="addTool()">Add Tool</button>
 
   <ul>
-    <li *ngFor="let tool of tools">{{ tool }}</li>
+    <li *ngFor="let item of tools; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
+
 </div>

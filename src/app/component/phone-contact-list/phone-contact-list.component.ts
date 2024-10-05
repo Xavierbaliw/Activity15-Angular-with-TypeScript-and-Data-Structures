@@ -6,22 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './phone-contact-list.component.css'
 })
 export class PhoneContactListComponent {
-  contacts: { name: string; phone: string }[] = [
-    { name: 'Xavier', phone: '09933214858' },
-    { name: 'Renzlyn', phone: '09488619358' },
-    { name: 'Ohmar', phone: '09666307584' }
-  ];
-
-  newContact: { name: string; phone: string } = { name: '', phone: '' };
+  contacts: string[] = ['09933214343 -Xav'];
+  contactName: string = '';
 
 
   addContact() {
-    if (this.newContact.name && this.newContact.phone) {
-      this.contacts.push({ ...this.newContact });
-      this.newContact.name = '';
-      this.newContact.phone = '';
-    } else {
-      alert('Both fields are required!');
+    if (this.contactName.trim() !== '') {
+      this.contacts.push(this.contactName.trim());
+      this.contactName = '';
     }
+  }
+
+  removeContact(index: number) {
+    this.contacts.splice(index, 1);
   }
 }

@@ -10,21 +10,26 @@ export class StudentListComponent {
   name: string = '';
   course: string = '';
   section: string = '';
-  studentList: string[] = [
+  studentList: string[] = [];
 
-  ];
-
-  addItem() {
-    if (this.name.trim() && this.course.trim() && this.section.trim()) {
-      const studentInfo = `Name: ${this.name.trim()} , Course: ${this.course.trim()}, Section: ${this.section.trim()}`;
+  addItem(): void {
+    const studentInfo = `${this.name} - ${this.course} (${this.section})`;
+    if (this.name && this.course && this.section) {
       this.studentList.push(studentInfo);
+      this.clearInputs();
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
 
-      this.name = '';
-      this.course = '';
-      this.section = '';
-    }
-    else {
-      console.log('Please fill out all fields.');
-    }
+
+  removeItem(index: number): void {
+    this.studentList.splice(index, 1);
+  }
+
+  clearInputs(): void {
+    this.name = '';
+    this.course = '';
+    this.section = '';
   }
 }

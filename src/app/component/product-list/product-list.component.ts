@@ -10,10 +10,13 @@ export class ProductListComponent {
   newProduct: string = '';
 
 
-  addProduct() {
-    if (this.newProduct) {
-      this.products.push(this.newProduct);
-      this.newProduct = '';
+    addProduct() {
+      if (this.newProduct) {
+        this.products.push(this.newProduct);
+        this.newProduct = '';
+      }
     }
+    removeItem(index: number) {
+      this.products.splice(index, 1);
   }
 }

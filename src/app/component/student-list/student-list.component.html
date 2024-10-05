@@ -6,7 +6,11 @@
 
   <button (click)="addItem()">Add Student</button>
 
+
   <ul>
-    <li *ngFor="let student of studentList">{{ student }}</li>
+    <li *ngFor="let item of studentList; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 </div>

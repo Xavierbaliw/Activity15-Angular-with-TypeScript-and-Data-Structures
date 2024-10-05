@@ -5,6 +5,9 @@
   <button (click)="addGame()">Add Game</button>
 
   <ul>
-    <li *ngFor="let game of games">{{ game }}</li>
+    <li *ngFor="let item of games; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 </div>

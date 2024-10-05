@@ -4,6 +4,9 @@
   <button (click)="addLanguage()">Add Language</button>
 
   <ul>
-    <li *ngFor="let language of languages">{{language}}</li>
+    <li *ngFor="let item of languages; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 </div>

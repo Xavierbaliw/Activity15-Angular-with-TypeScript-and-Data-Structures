@@ -6,14 +6,16 @@ import { Component } from '@angular/core';
   styleUrl: './tool-list.component.css'
 })
 export class ToolListComponent {
-  tools: string[] = ['Hammer', 'Screwdriver', 'Wrench']; // Sample list of tools
-  newTool: string = ''; // To capture the new tool input
+  tools: string[] = ['Hammer', 'Screwdriver', 'Wrench'];
+  newTool: string = '';
 
-  // Method to add a new tool to the list
   addTool() {
     if (this.newTool) {
       this.tools.push(this.newTool);
-      this.newTool = ''; // Clear the input field
+      this.newTool = '';
     }
+  }
+  removeItem(index: number) {
+    this.tools.splice(index, 1);
   }
 }

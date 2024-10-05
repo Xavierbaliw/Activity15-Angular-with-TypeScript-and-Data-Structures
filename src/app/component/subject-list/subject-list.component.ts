@@ -17,7 +17,7 @@ export class SubjectListComponent {
     }
   }
 
-  getSubjects(): string[] {
-    return this.subjects;
+  removeItem(index: number) {
+    this.subjects.splice(index, 1);
   }
 }

@@ -6,6 +6,9 @@
 
   <h2>My Playlist</h2>
   <ul>
-    <li *ngFor="let song of playlist">{{ song }}</li>
+    <li *ngFor="let item of playlist; let i = index">
+      {{ item }}
+      <button (click)="removeItem(i)">Remove</button>
+    </li>
   </ul>
 </div>
