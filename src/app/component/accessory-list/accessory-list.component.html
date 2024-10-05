@@ -1,0 +1,17 @@
+<div class="accessories-container">
+  <h2>Mobile Phone Accessories List</h2>
+
+  <input
+    type="text"
+    [(ngModel)]="newAccessory"
+    placeholder="Add new accessory"
+  />
+  <button (click)="addAccessory()">Add</button>
+
+  <ul>
+    <li *ngFor="let accessory of accessories; let i = index">
+      {{ accessory }}
+      <button (click)="removeAccessory(i)">Remove</button>
+    </li>
+  </ul>
+</div>

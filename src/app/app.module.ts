@@ -42,6 +42,7 @@ import {MobileappListComponent} from "./component/mobileapp-list/mobileapp-list.
 import {VideoListComponent} from "./component/video-list/video-list.component";
 import {ShowListComponent} from "./component/show-list/show-list.component";
 import {FurnitureListComponent} from "./component/furniture-list/furniture-list.component";
+import {AccessoryListComponent} from "./component/accessory-list/accessory-list.component";
 
 
 const routes: Routes = [
@@ -80,6 +81,7 @@ const routes: Routes = [
   {path: 'videolist', component: VideoListComponent},
   {path: 'showlist', component: ShowListComponent},
   {path: 'furniturelist', component: FurnitureListComponent},
+  {path: 'accessorylist', component: AccessoryListComponent},
 
 
 
@@ -131,6 +133,7 @@ const routes: Routes = [
     VideoListComponent,
     ShowListComponent,
     FurnitureListComponent,
+    AccessoryListComponent,
     ],
   providers: [
 
