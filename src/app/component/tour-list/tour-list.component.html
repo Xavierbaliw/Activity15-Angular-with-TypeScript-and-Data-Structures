@@ -1,0 +1,15 @@
+<div style="text-align:center">
+  <h1>{{ title }}</h1>
+
+  <div>
+    <input [(ngModel)]="newDate" placeholder="Enter tour date" />
+    <button (click)="addTourDate()">Add Tour Date</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let date of tourDates; let i = index">
+      {{ date }}
+      <button (click)="removeTourDate(i)">Remove</button>
+    </li>
+  </ul>
+</div>
