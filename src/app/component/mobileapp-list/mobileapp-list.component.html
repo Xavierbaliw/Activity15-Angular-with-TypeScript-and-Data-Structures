@@ -1,0 +1,14 @@
+
+<div>
+  <h2>Mobile App List</h2>
+
+  <input type="text" [(ngModel)]="newApp" placeholder="Add new app" />
+  <button (click)="addApp()">Add App</button>
+
+  <ul>
+    <li *ngFor="let app of apps; let i = index">
+      {{ app }}
+      <button (click)="removeApp(i)">Remove</button>
+    </li>
+  </ul>
+</div>
