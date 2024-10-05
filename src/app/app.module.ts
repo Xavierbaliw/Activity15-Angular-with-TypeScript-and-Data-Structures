@@ -44,6 +44,7 @@ import {ShowListComponent} from "./component/show-list/show-list.component";
 import {FurnitureListComponent} from "./component/furniture-list/furniture-list.component";
 import {AccessoryListComponent} from "./component/accessory-list/accessory-list.component";
 import {BuildingListComponent} from "./component/building-list/building-list.component";
+import {PaintingListComponent} from "./component/painting-list/painting-list.component";
 
 
 const routes: Routes = [
@@ -84,6 +85,7 @@ const routes: Routes = [
   {path: 'furniturelist', component: FurnitureListComponent},
   {path: 'accessorylist', component: AccessoryListComponent},
   {path: 'buildinglist', component: BuildingListComponent},
+  {path: 'paintinglist', component: PaintingListComponent},
 
 
 
@@ -137,6 +139,7 @@ const routes: Routes = [
     FurnitureListComponent,
     AccessoryListComponent,
     BuildingListComponent,
+    PaintingListComponent,
     ],
   providers: [
 
