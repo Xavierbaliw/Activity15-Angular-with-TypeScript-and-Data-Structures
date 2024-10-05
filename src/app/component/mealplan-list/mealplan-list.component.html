@@ -1,0 +1,12 @@
+<div>
+  <h2>Weekly Meal Plan</h2>
+
+  <input type="text" [(ngModel)]="newMeal" placeholder="Add a new meal" />
+  <button (click)="addMeal()">Add Meal</button>
+
+  <ul>
+    <li *ngFor="let meal of meals; let i = index">
+      {{ meal }} <button (click)="removeMeal(i)">Remove</button>
+    </li>
+  </ul>
+</div>
