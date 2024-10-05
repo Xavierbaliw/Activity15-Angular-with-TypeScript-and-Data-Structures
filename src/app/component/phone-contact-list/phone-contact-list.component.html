@@ -1,0 +1,22 @@
+<div class="contact-list">
+  <h2>Phone Contact List</h2>
+
+  <form (ngSubmit)="addContact()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" [(ngModel)]="newContact.name" name="name" required />
+    </div>
+    <div>
+      <label for="phone">Phone:</label>
+      <input id="phone" [(ngModel)]="newContact.phone" name="phone" required />
+    </div>
+    <button type="submit">Add Contact</button>
+  </form>
+
+  <h3>Contacts</h3>
+  <ul>
+    <li *ngFor="let contact of contacts">
+      {{ contact.name }} - {{ contact.phone }}
+    </li>
+  </ul>
+</div>

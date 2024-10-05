@@ -23,6 +23,7 @@ import {ToolListComponent} from "./component/tool-list/tool-list.component";
 import {LanguageListComponent} from "./component/language-list/language-list.component";
 import {GameListComponent} from "./component/game-list/game-list.component";
 import {SoftwareListComponent} from "./component/software-list/software-list.component";
+import {PhoneContactListComponent} from "./component/phone-contact-list/phone-contact-list.component";
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
   {path: 'toollist', component: ToolListComponent},
   {path: 'languagelist', component: LanguageListComponent},
   {path: 'gamelist', component: GameListComponent},
-  {path: 'softwarelist', component: SoftwareListComponent}
+  {path: 'softwarelist', component: SoftwareListComponent},
+  {path: 'phonecontactlist', component: PhoneContactListComponent}
 
   ]
 
@@ -76,6 +78,7 @@ const routes: Routes = [
     LanguageListComponent,
     GameListComponent,
     SoftwareListComponent,
+    PhoneContactListComponent,
     ],
   providers: [
 
