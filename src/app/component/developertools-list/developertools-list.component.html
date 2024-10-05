@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>TV Developer Tools List</h2>
+
+  <input [(ngModel)]="newTool" placeholder="Enter a developer tool" />
+  <button (click)="addTool()">Add Tool</button>
+
+  <h3>List of Developer Tools</h3>
+  <ul>
+    <li *ngFor="let tool of developerTools; let i = index">
+      {{ tool }}
+      <button (click)="removeTool(i)">Remove</button>
+    </li>
+  </ul>
+</div>

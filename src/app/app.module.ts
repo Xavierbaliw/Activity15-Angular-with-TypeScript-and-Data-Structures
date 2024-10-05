@@ -54,6 +54,7 @@ import {BudgetListComponent} from "./component/budget-list/budget-list.component
 import {PresentationListComponent} from "./component/presentation-list/presentation-list.component";
 import {TourListComponent} from "./component/tour-list/tour-list.component";
 import {EventListComponent} from "./component/event-list/event-list.component";
+import {DevelopertoolsListComponent} from "./component/developertools-list/developertools-list.component";
 
 
 const routes: Routes = [
@@ -104,6 +105,7 @@ const routes: Routes = [
   {path: 'presentationlist', component: PresentationListComponent},
   {path: 'tourlist', component: TourListComponent},
   {path: 'eventlist', component: EventListComponent},
+  {path: 'devtoollist', component: DevelopertoolsListComponent},
   ]
 
 @NgModule ({
@@ -164,6 +166,7 @@ const routes: Routes = [
     PresentationListComponent,
     TourListComponent,
     EventListComponent,
+    DevelopertoolsListComponent,
     ],
   providers: [
 
