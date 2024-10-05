@@ -37,6 +37,7 @@ import {LaptopListComponent} from "./component/laptop-list/laptop-list.component
 import {
   LaptopspecificationListComponent
 } from "./component/laptopspecification-list/laptopspecification-list.component";
+import {ComputerhardwareListComponent} from "./component/computerhardware-list/computerhardware-list.component";
 
 
 const routes: Routes = [
@@ -69,8 +70,8 @@ const routes: Routes = [
   {path: 'flowerlist', component: FlowerlistComponent},
   {path: 'destinationlist', component: DestinationListComponent},
   {path: 'laptoplist', component: LaptopListComponent},
-  {path: 'laptopspecificationlist', component: LaptopspecificationListComponent}
-
+  {path: 'laptopspecificationlist', component: LaptopspecificationListComponent},
+  {path: 'computerhardwarelist', component: ComputerhardwareListComponent},
 
 
 
@@ -117,6 +118,7 @@ const routes: Routes = [
     DestinationListComponent,
     LaptopListComponent,
     LaptopspecificationListComponent,
+    ComputerhardwareListComponent,
     ],
   providers: [
 

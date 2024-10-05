@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Computer Hardware List</h2>
+
+  <input type="text" [(ngModel)]="newComponent" placeholder="Add new hardware" />
+  <button (click)="addComponent()">Add</button>
+
+  <ul>
+    <li *ngFor="let component of hardwareComponents; let i = index">
+      {{ component }}
+      <button (click)="removeComponent(i)">Remove</button>
+    </li>
+  </ul>
+</div>
