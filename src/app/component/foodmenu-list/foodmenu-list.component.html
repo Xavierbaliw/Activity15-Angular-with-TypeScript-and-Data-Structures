@@ -1,0 +1,13 @@
+<div>
+  <h1>Food Menu</h1>
+
+  <form (submit)="addFoodItem()">
+    <input type="text" [(ngModel)]="newFoodItem" placeholder="Enter food item" required>
+    <button type="submit">Add Food Item</button>
+  </form>
+
+  <h2>Current Menu:</h2>
+  <ul>
+    <li *ngFor="let item of foodMenu">{{ item }}</li>
+  </ul>
+</div>
