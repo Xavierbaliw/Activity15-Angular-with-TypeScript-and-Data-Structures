@@ -1,0 +1,16 @@
+<div>
+  <h1>Composer List</h1>
+  <input
+    type="text"
+    [(ngModel)]="newComposer"
+    placeholder="Add a new composer"
+  />
+  <button (click)="addComposer()">Add Composer</button>
+
+  <ul>
+    <li *ngFor="let composer of composers; let i = index">
+      {{ composer }}
+      <button (click)="removeComposer(i)">Remove</button>
+    </li>
+  </ul>
+</div>
