@@ -8,12 +8,14 @@ import { AppComponent } from "./app.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {EmployeeListComponent} from "./component/employee-list/employee-list.component";
 import {FruitListComponent} from "./component/fruit-list/fruit-list.component";
+import {CourseListComponent} from "./component/course-list/course-list.component";
 
 
 const routes: Routes = [
   {path: '', component: StudentListComponent},
   {path: 'employeelist', component: EmployeeListComponent},
   {path: 'fruitlist', component: FruitListComponent},
+  {path: 'courselist', component: CourseListComponent},
 
   ]
 
@@ -31,6 +33,7 @@ const routes: Routes = [
     StudentListComponent,
     EmployeeListComponent,
     FruitListComponent,
+    CourseListComponent,
     ],
   providers: [
 
