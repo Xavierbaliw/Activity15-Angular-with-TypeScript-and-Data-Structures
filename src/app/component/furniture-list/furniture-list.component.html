@@ -1,0 +1,13 @@
+<div>
+  <h2>TV Furniture List</h2>
+
+  <input type="text" [(ngModel)]="newItem" placeholder="Add new furniture" />
+  <button (click)="addFurniture()">Add</button>
+
+  <ul>
+    <li *ngFor="let item of furnitureItems; let i = index">
+      {{ item }}
+      <button (click)="removeFurniture(i)">Remove</button>
+    </li>
+  </ul>
+</div>
