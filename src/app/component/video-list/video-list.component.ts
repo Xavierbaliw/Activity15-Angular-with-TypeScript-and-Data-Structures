@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './video-list.component.css'
 })
 export class VideoListComponent {
-  // Sample list of videos
   videos: string[] = [
     'Angular Basics',
     'TypeScript for Beginners',
