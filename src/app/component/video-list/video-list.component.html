@@ -1,0 +1,13 @@
+<div>
+  <h2>Video Library</h2>
+
+  <input [(ngModel)]="newVideo" placeholder="Add a new video title" />
+  <button (click)="addVideo()">Add Video</button>
+
+  <h3>List of Videos</h3>
+  <ul>
+    <li *ngFor="let video of videos; let i = index">
+      {{ video }} <button (click)="removeVideo(i)">Remove</button>
+    </li>
+  </ul>
+</div>
