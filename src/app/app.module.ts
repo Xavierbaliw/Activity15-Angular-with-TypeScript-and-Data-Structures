@@ -26,6 +26,7 @@ import {SoftwareListComponent} from "./component/software-list/software-list.com
 import {PhoneContactListComponent} from "./component/phone-contact-list/phone-contact-list.component";
 import {MusicplayListComponent} from "./component/musicplay-list/musicplay-list.component";
 import {FoodmenuListComponent} from "./component/foodmenu-list/foodmenu-list.component";
+import {GroceryListComponent} from "./component/grocery-list/grocery-list.component";
 
 
 const routes: Routes = [
@@ -49,7 +50,8 @@ const routes: Routes = [
   {path: 'softwarelist', component: SoftwareListComponent},
   {path: 'phonecontactlist', component: PhoneContactListComponent},
   {path: 'musicplaylist', component: MusicplayListComponent},
-  {path: 'foodmenulist', component: FoodmenuListComponent}
+  {path: 'foodmenulist', component: FoodmenuListComponent},
+  {path: 'grocerylist', component: GroceryListComponent}
 
 
   ]
@@ -86,6 +88,7 @@ const routes: Routes = [
     PhoneContactListComponent,
     MusicplayListComponent,
     FoodmenuListComponent,
+    GroceryListComponent,
     ],
   providers: [
 

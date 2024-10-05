@@ -1,0 +1,11 @@
+<div>
+  <h1>Grocery List</h1>
+
+  <input type="text" [(ngModel)]="newItem" placeholder="Add new item" />
+  <button (click)="addItem()">Add Item</button>
+
+  <h2>Your Grocery Items</h2>
+  <ul>
+    <li *ngFor="let item of groceryItems">{{ item }}</li>
+  </ul>
+</div>
