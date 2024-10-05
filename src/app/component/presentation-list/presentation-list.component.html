@@ -1,0 +1,12 @@
+<div class="presentation-list">
+  <h2>TV Presentation Topics</h2>
+  <input [(ngModel)]="newTopic" placeholder="Add new topic" />
+  <button (click)="addTopic()">Add Topic</button>
+  <ul>
+    <li *ngFor="let topic of presentationTopics; let i = index">
+      {{ i + 1 }}. {{ topic }}
+      <button (click)="removeTopic(i)">Remove</button>
+    </li>
+  </ul>
+
+</div>
