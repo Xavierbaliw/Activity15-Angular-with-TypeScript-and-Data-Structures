@@ -1,0 +1,13 @@
+<div>
+  <h2>Laptop List</h2>
+
+  <input [(ngModel)]="newLaptop" placeholder="Add new laptop model" />
+  <button (click)="addLaptop()">Add Laptop</button>
+
+  <ul>
+    <li *ngFor="let laptop of laptops; let i = index">
+      {{ laptop }}
+      <button (click)="removeLaptop(i)">Remove</button>
+    </li>
+  </ul>
+</div>
