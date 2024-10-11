@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {StudentListService} from "../../services/student-list.service";
 
 @Component({
   selector: 'app-student-list',
@@ -6,25 +7,28 @@ import { Component } from '@angular/core';
   styleUrl: './student-list.component.css'
 })
 export class StudentListComponent {
-
   name: string = '';
   course: string = '';
   section: string = '';
-  studentList: string[] = [];
+
+  constructor(private studentListService: StudentListService) {}
+
+  get studentList(): string[] {
+    return this.studentListService.getStudents();
+  }
 
   addItem(): void {
     const studentInfo = `${this.name} - ${this.course} (${this.section})`;
     if (this.name && this.course && this.section) {
-      this.studentList.push(studentInfo);
+      this.studentListService.addStudent(studentInfo);
       this.clearInputs();
     } else {
       alert('Please fill in all fields.');
     }
   }
 
-
   removeItem(index: number): void {
-    this.studentList.splice(index, 1);
+    this.studentListService.removeStudent(index);
   }
 
   clearInputs(): void {
