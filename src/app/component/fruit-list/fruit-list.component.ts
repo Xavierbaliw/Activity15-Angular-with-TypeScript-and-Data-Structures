@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FruitListService} from "../../services/fruit-list.service";
 
 @Component({
   selector: 'app-fruit-list',
@@ -7,17 +8,19 @@ import { Component } from '@angular/core';
 })
 export class FruitListComponent {
   fruitName: string = '';
-  fruitList: string[] = [];
 
+  constructor(private fruitListService: FruitListService) {}
+
+  get fruitList(): string[] {
+    return this.fruitListService.getFruitList();
+  }
 
   addFruit(): void {
-    if (this.fruitName) {
-      this.fruitList.push(this.fruitName);
-      this.fruitName = '';
-    }
+    this.fruitListService.addFruit(this.fruitName);
+    this.fruitName = '';
   }
 
   removeFruit(index: number): void {
-    this.fruitList.splice(index, 1);
+    this.fruitListService.removeFruit(index);
   }
 }
