@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CourseListService} from "../../services/course-list.service";
 
 @Component({
   selector: 'app-course-list',
@@ -9,23 +10,18 @@ import { Component } from '@angular/core';
 export class CourseListComponent {
   courseName: string = '';
 
-  courseList: { name: string }[] = [
-    { name: 'BSIT' },
-  ];
+  constructor(private courseListService: CourseListService) { }
+
+  get courseList() {
+    return this.courseListService.getCourses();
+  }
 
   addCourse() {
-    if (this.courseName.trim()) {
-      const newCourse = {
-        name: this.courseName.trim(),
-      };
-      this.courseList.push(newCourse);
-      this.courseName = '';
-    } else {
-      console.log('Please fill out all fields.');
-    }
+    this.courseListService.addCourse(this.courseName);
+    this.courseName = '';
   }
 
   removeCourse(index: number) {
-    this.courseList.splice(index, 1);
+    this.courseListService.removeCourse(index);
   }
 }
