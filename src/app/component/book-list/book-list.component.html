@@ -1,15 +1,14 @@
-<div>
-  <h2>Book List</h2>
-  <input
-    type="text"
-    [(ngModel)]="newBook"
-    placeholder="Enter book title"
-  />
-  <button (click)="addBook()">Add Book</button>
+<div class="book-list-container">
+  <p>BOOK LIST</p>
+
+  <div class="add-book">
+    <input [(ngModel)]="newBook" placeholder="Enter book name" />
+    <button (click)="addBook()">Add Book</button>
+  </div>
 
   <ul>
-    <li *ngFor="let item of books; let i = index">
-      {{ item }}
+    <li *ngFor="let book of getBooks(); let i = index">
+      {{ book }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
