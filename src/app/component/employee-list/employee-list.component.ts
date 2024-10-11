@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {EmployeeListService} from "../../services/employee-list.service";
+
 
 @Component({
   selector: 'app-employee-list',
@@ -11,15 +12,10 @@ export class EmployeeListComponent {
   position: string = '';
   department: string = '';
 
-  employeeList: { name: string; position: string; department: string }[] = [];
+  constructor(private employeeListService: EmployeeListService) {}
 
-  constructor() {
-    this.employeeList.push({
-      name: 'Avelino',
-      position: 'Business Developer',
-      department: 'Tiktok'
-
-    });
+  get employeeList() {
+    return this.employeeListService.getEmployees();
   }
 
   addEmployee() {
@@ -27,10 +23,10 @@ export class EmployeeListComponent {
       const newEmployee = {
         name: this.name.trim(),
         position: this.position.trim(),
-        department: this.department.trim()
+        department: this.department.trim(),
       };
 
-      this.employeeList.push(newEmployee);
+      this.employeeListService.addEmployee(newEmployee);
 
       this.name = '';
       this.position = '';
@@ -41,6 +37,6 @@ export class EmployeeListComponent {
   }
 
   removeEmployee(index: number) {
-    this.employeeList.splice(index, 1);
+    this.employeeListService.removeEmployee(index);
   }
 }
