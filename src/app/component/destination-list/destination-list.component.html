@@ -1,17 +1,16 @@
-<div class="container">
-  <h2>Destination List</h2>
+<div class="destination-list-container">
+  <p>DESTINATION LIST</p>
 
-  <input
-    [(ngModel)]="newDestination"
-    placeholder="Add new destination"
-    (keyup.enter)="addDestination()"
-  />
-  <button (click)="addDestination()">Add</button>
+  <div class="add-destination">
+    <input [(ngModel)]="newDestination" placeholder="Enter destination name" />
+    <button (click)="addDestination()">Add Destination</button>
+  </div>
 
+  <h2>PLACE :</h2>
   <ul>
-    <li *ngFor="let destination of destinations; let i = index">
+    <li *ngFor="let destination of getDestinations(); let i = index">
       {{ destination }}
-      <button (click)="removeDestination(i)">Remove</button>
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>

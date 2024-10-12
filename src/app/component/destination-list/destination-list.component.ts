@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DestinationListService} from "../../services/destination-list.service";
 
 @Component({
   selector: 'app-destination-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './destination-list.component.css'
 })
 export class DestinationListComponent {
-  destinations: string[] = ['Paris', 'New York', 'Switzerland', 'London'];
   newDestination: string = '';
+
+  constructor(private destinationListService: DestinationListService) {}
 
   addDestination() {
     if (this.newDestination.trim()) {
-      this.destinations.push(this.newDestination.trim());
+      this.destinationListService.addDestination(this.newDestination.trim());
       this.newDestination = '';
     }
   }
 
-  removeDestination(index: number) {
-    this.destinations.splice(index, 1);
+  getDestinations(): string[] {
+    return this.destinationListService.getDestinations();
+  }
+
+  removeItem(index: number) {
+    this.destinationListService.removeDestination(index);
   }
 }
