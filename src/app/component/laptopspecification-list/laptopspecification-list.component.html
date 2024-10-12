@@ -1,19 +1,16 @@
-<div class="container">
-  <h2>Laptop Specifications List</h2>
+<div class="laptop-specification-container">
+  <p>LAPTOP SPECIFICATIONS</p>
 
-  <div>
-    <input
-      type="text"
-      [(ngModel)]="newSpec"
-      placeholder="Add new laptop specification"
-    />
-    <button (click)="addSpec()">Add</button>
+  <div class="add-specification">
+    <input [(ngModel)]="newSpecification" placeholder="Enter laptop specification" />
+    <button (click)="addSpecification()">Add Specification</button>
   </div>
 
+  <h2>SPECS :</h2>
   <ul>
-    <li *ngFor="let spec of laptopSpecs; let i = index">
-      {{ spec }}
-      <button (click)="removeSpec(i)">Remove</button>
+    <li *ngFor="let specification of getSpecifications(); let i = index">
+      {{ specification }}
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LaptopspecificationListService} from "../../services/laptopspecification-list.service";
 
 @Component({
   selector: 'app-laptopspecification-list',
@@ -6,22 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './laptopspecification-list.component.css'
 })
 export class LaptopspecificationListComponent {
-  laptopSpecs: string[] = [
-    'Intel Core i7, 16GB RAM, 512GB SSD',
-    'AMD Ryzen 5, 8GB RAM, 1TB HDD',
-    'Apple M1, 8GB RAM, 256GB SSD'
-  ];
+  newSpecification: string = '';
 
-  newSpec: string = '';
+  constructor(private laptopSpecificationService: LaptopspecificationListService) {}
 
-  addSpec(): void {
-    if (this.newSpec.trim()) {
-      this.laptopSpecs.push(this.newSpec.trim());
-      this.newSpec = '';
+  addSpecification() {
+    if (this.newSpecification.trim()) {
+      this.laptopSpecificationService.addSpecification(this.newSpecification.trim());
+      this.newSpecification = '';
     }
   }
 
-  removeSpec(index: number): void {
-    this.laptopSpecs.splice(index, 1);
+  getSpecifications(): string[] {
+    return this.laptopSpecificationService.getSpecifications();
+  }
+
+  removeItem(index: number) {
+    this.laptopSpecificationService.removeSpecification(index);
   }
 }
