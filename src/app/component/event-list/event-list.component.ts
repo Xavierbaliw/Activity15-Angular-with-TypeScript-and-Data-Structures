@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {EventListService} from "../../services/event-list.service";
 
 @Component({
   selector: 'app-event-list',
@@ -6,25 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './event-list.component.css'
 })
 export class EventListComponent {
-  // Define an array to hold upcoming TV events
-  events: string[] = [
-    'Fiesta',
-    'Dance Contest',
-    'Singing Contest',
-  ];
-
   newEvent: string = '';
 
+  constructor(private eventListService: EventListService) {}
 
-  addEvent(): void {
-    if (this.newEvent) {
-      this.events.push(this.newEvent);
+  addEvent() {
+    if (this.newEvent.trim()) {
+      this.eventListService.addEvent(this.newEvent.trim());
       this.newEvent = '';
     }
   }
 
-  removeEvent(event: string): void {
-    this.events = this.events.filter(e => e !== event);
+  getEvents(): string[] {
+    return this.eventListService.getEvents();
+  }
+
+  removeItem(index: number) {
+    this.eventListService.removeEvent(index);
   }
 }
-

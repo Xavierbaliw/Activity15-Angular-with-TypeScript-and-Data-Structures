@@ -1,12 +1,16 @@
-<div class="event-list">
-  <h2>Upcoming TV Events</h2>
-  <input [(ngModel)]="newEvent" placeholder="Add new event" />
-  <button (click)="addEvent()">Add Event</button>
+<div class="event-list-container">
+<p>EVENT LIST</p>
 
-  <ul>
-    <li *ngFor="let event of events">
-      {{ event }}
-      <button (click)="removeEvent(event)">Remove</button>
-    </li>
-  </ul>
+<div class="add-event">
+  <input [(ngModel)]="newEvent" placeholder="Enter event name" />
+  <button (click)="addEvent()">Add Event</button>
+</div>
+
+<h2>UPCOMING EVENTS : </h2>
+<ul>
+  <li *ngFor="let event of getEvents(); let i = index">
+    {{ event }}
+    <button (click)="removeItem(i)">Remove</button>
+  </li>
+</ul>
 </div>
