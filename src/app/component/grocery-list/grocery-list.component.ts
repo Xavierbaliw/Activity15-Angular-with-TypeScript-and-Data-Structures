@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GroceryListService} from "../../services/grocery-list.service";
 
 @Component({
   selector: 'app-grocery-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './grocery-list.component.css'
 })
 export class GroceryListComponent {
-  groceryItems: string[] = ['Milk', 'Eggs', 'Bread', 'Butter'];
-  newItem: string = '';
+  newGrocery: string = '';
 
-  addItem() {
-    if (this.newItem) {
-      this.groceryItems.push(this.newItem);
-      this.newItem = '';
+  constructor(private groceryListService: GroceryListService) {}
+
+  addGrocery() {
+    if (this.newGrocery.trim()) {
+      this.groceryListService.addGrocery(this.newGrocery.trim());
+      this.newGrocery = '';
     }
   }
+
+  getGroceries(): string[] {
+    return this.groceryListService.getGroceries();
+  }
+
   removeItem(index: number) {
-    this.groceryItems.splice(index, 1);
+    this.groceryListService.removeGrocery(index);
   }
 }
-

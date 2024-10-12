@@ -1,14 +1,14 @@
-<div>
-  <h1>Grocery List</h1>
+<div class="grocery-list-container">
+  <p>GROCERY LIST</p>
 
-  <input type="text" [(ngModel)]="newItem" placeholder="Add new item" />
-  <button (click)="addItem()">Add Item</button>
-
-  <h2>Your Grocery Items</h2>
-
+  <div class="add-grocery">
+    <input [(ngModel)]="newGrocery" placeholder="Enter grocery item" />
+    <button (click)="addGrocery()">Add Grocery</button>
+  </div>
+<h2>YOUR GROCERY ITEMS:</h2>
   <ul>
-    <li *ngFor="let item of groceryItems; let i = index">
-      {{ item }}
+    <li *ngFor="let grocery of getGroceries(); let i = index">
+      {{ grocery }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
