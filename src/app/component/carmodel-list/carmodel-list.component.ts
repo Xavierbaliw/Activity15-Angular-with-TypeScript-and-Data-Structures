@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CarmodelListService} from "../../services/carmodel-list.service";
 
 @Component({
   selector: 'app-carmodel-list',
@@ -6,16 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './carmodel-list.component.css'
 })
 export class CarmodelListComponent {
-  carModels: string[] = ['Toyota','VIOS'];
   newCarModel: string = '';
+
+  constructor(private carModelListService: CarmodelListService) {}
 
   addCarModel() {
     if (this.newCarModel.trim()) {
-      this.carModels.push(this.newCarModel.trim());
+      this.carModelListService.addCarModel(this.newCarModel.trim());
       this.newCarModel = '';
     }
   }
-  removeItem(index: number) {
-    this.carModels.splice(index, 1);
+
+  getCarModels(): string[] {
+    return this.carModelListService.getCarModels();
+  }
+
+  removeModel(index: number) {
+    this.carModelListService.removeCarModel(index);
   }
 }

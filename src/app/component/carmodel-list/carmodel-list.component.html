@@ -1,14 +1,15 @@
-<div class="container">
-  <h1>Car Model List</h1>
+<div class="car-model-list-container">
+  <p>CAR MODEL LIST</p>
 
-  <input type="text" [(ngModel)]="newCarModel" placeholder="Enter new car model" />
-  <button (click)="addCarModel()">Add Car Model</button>
+  <div class="add-car-model">
+    <input [(ngModel)]="newCarModel" placeholder="Enter car model name" />
+    <button (click)="addCarModel()">Add Car Model</button>
+  </div>
 
-  <h2>Car Models:</h2>
   <ul>
-    <li *ngFor="let item of carModels; let i = index">
-      {{ item }}
-      <button (click)="removeItem(i)">Remove</button>
+    <li *ngFor="let carModel of getCarModels(); let i = index">
+      {{ carModel }}
+      <button (click)="removeModel(i)">Remove</button>
     </li>
   </ul>
 </div>
