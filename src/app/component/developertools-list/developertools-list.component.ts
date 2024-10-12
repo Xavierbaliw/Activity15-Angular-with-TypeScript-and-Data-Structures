@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DevelopertoolsListService} from "../../services/developertools-list.service";
 
 @Component({
   selector: 'app-developertools-list',
@@ -6,23 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './developertools-list.component.css'
 })
 export class DevelopertoolsListComponent {
-  developerTools: string[] = [
-    'Visual Studio Code',
-    'Git',
-  ];
-
   newTool: string = '';
 
-  addTool(): void {
+  constructor(private developerToolsService: DevelopertoolsListService) {}
+
+  addTool() {
     if (this.newTool.trim()) {
-      this.developerTools.push(this.newTool);
+      this.developerToolsService.addTool(this.newTool.trim());
       this.newTool = '';
-    } else {
-      alert("Please enter a tool name.");
     }
   }
 
-  removeTool(index: number): void {
-    this.developerTools.splice(index, 1);
+  getTools(): string[] {
+    return this.developerToolsService.getTools();
+  }
+
+  removeItem(index: number) {
+    this.developerToolsService.removeTool(index);
   }
 }
