@@ -1,14 +1,16 @@
+<div class="mobile-app-list-container">
+  <p>MOBILE APP LIST</p>
 
-<div>
-  <h2>Mobile App List</h2>
+  <div class="add-app">
+    <input [(ngModel)]="newApp" placeholder="Enter mobile app name" />
+    <button (click)="addApp()">Add App</button>
+  </div>
 
-  <input type="text" [(ngModel)]="newApp" placeholder="Add new app" />
-  <button (click)="addApp()">Add App</button>
-
+  <h2>APPS NAME : </h2>
   <ul>
-    <li *ngFor="let app of apps; let i = index">
+    <li *ngFor="let app of getApps(); let i = index">
       {{ app }}
-      <button (click)="removeApp(i)">Remove</button>
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>

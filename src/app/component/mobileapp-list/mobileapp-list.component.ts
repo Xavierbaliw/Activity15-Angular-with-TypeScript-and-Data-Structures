@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MobileappListService} from "../../services/mobileapp-list.service";
 
 @Component({
   selector: 'app-mobileapp-list',
@@ -6,19 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './mobileapp-list.component.css'
 })
 export class MobileappListComponent {
-  apps: string[] = ['Facebook','Instagram','Whatsapp','Telegram'];
   newApp: string = '';
 
+  constructor(private mobileAppListService: MobileappListService) {}
 
-  addApp(): void {
-    if (this.newApp.trim() !== '') {
-      this.apps.push(this.newApp.trim());
+  addApp() {
+    if (this.newApp.trim()) {
+      this.mobileAppListService.addApp(this.newApp.trim());
       this.newApp = '';
     }
   }
 
+  getApps(): string[] {
+    return this.mobileAppListService.getApps();
+  }
 
-  removeApp(index: number): void {
-    this.apps.splice(index, 1);
+  removeItem(index: number) {
+    this.mobileAppListService.removeApp(index);
   }
 }
