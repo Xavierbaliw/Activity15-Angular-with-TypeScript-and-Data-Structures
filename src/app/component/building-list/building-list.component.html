@@ -1,14 +1,17 @@
+<div class="building-list-container">
+  <p>BUILDING LIST</p>
 
-<div>
-  <h2>Campus Building List</h2>
+  <div class="add-building">
+    <input [(ngModel)]="newBuilding" placeholder="Enter building name" />
+    <button (click)="addBuilding()">Add Building</button>
+  </div>
 
-  <input [(ngModel)]="newBuilding" placeholder="Add new building" />
-  <button (click)="addBuilding()">Add Building</button>
+  <h2>CAMPUS BUILDING :</h2>
 
   <ul>
-    <li *ngFor="let building of buildings; let i = index">
+    <li *ngFor="let building of getBuildings(); let i = index">
       {{ building }}
-      <button (click)="removeBuilding(i)">Remove</button>
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>

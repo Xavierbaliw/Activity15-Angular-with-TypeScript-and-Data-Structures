@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {BuildingListService} from "../../services/building-list.service";
 
 @Component({
   selector: 'app-building-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './building-list.component.css'
 })
 export class BuildingListComponent {
-  buildings: string[] = ['Library', 'University Hall', 'Science Building'];
   newBuilding: string = '';
 
-  addBuilding(): void {
+  constructor(private buildingListService: BuildingListService) {}
+
+  addBuilding() {
     if (this.newBuilding.trim()) {
-      this.buildings.push(this.newBuilding);
+      this.buildingListService.addBuilding(this.newBuilding.trim());
       this.newBuilding = '';
     }
   }
 
-  removeBuilding(index: number): void {
-    this.buildings.splice(index, 1);
+  getBuildings(): string[] {
+    return this.buildingListService.getBuildings();
+  }
+
+  removeItem(index: number) {
+    this.buildingListService.removeBuilding(index);
   }
 }
