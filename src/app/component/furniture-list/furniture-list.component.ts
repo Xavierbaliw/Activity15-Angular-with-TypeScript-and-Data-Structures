@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FurnitureListService} from "../../services/furniture-list.service";
 
 @Component({
   selector: 'app-furniture-list',
@@ -6,19 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './furniture-list.component.css'
 })
 export class FurnitureListComponent {
+  newFurniture: string = '';
 
-  furnitureItems: string[] = ['TV Stand', 'Coffee Table', 'Bookshelf', 'Computer Table'];
-
-  newItem: string = '';
+  constructor(private furnitureListService: FurnitureListService) {}
 
   addFurniture() {
-    if (this.newItem) {
-      this.furnitureItems.push(this.newItem);
-      this.newItem = '';
+    if (this.newFurniture.trim()) {
+      this.furnitureListService.addFurniture(this.newFurniture.trim());
+      this.newFurniture = '';
     }
   }
 
-  removeFurniture(index: number) {
-    this.furnitureItems.splice(index, 1);
+  getFurnitures(): string[] {
+    return this.furnitureListService.getFurnitures();
+  }
+
+  removeItem(index: number) {
+    this.furnitureListService.removeFurniture(index);
   }
 }
