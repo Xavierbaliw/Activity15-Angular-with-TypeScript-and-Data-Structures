@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MusicplayListService} from "../../services/musicplay-list.service";
 
 @Component({
   selector: 'app-musicplay-list',
@@ -6,22 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './musicplay-list.component.css'
 })
 export class MusicplayListComponent {
-  playlist: string[] = ['Stay', '14 Silent Sunctuary', 'Sining'];
+  newMusic: string = '';
 
-  newSong: string = '';
+  constructor(private musicPlayListService: MusicplayListService) {}
 
-  addSong() {
-    if (this.newSong.trim()) {
-      this.playlist.push(this.newSong.trim());
-      this.newSong = '';
-    } else {
-      alert('Please enter a song name.');
+  addMusic() {
+    if (this.newMusic.trim()) {
+      this.musicPlayListService.addMusic(this.newMusic.trim());
+      this.newMusic = '';
     }
   }
-  getSongs() {
-    return this.playlist;
+
+  getMusicPlaylist(): string[] {
+    return this.musicPlayListService.getMusicPlaylist();
   }
+
   removeItem(index: number) {
-    this.playlist.splice(index, 1);
+    this.musicPlayListService.removeMusic(index);
   }
 }

@@ -1,13 +1,15 @@
-<div>
-  <h1>Music Playlist</h1>
+<div class="musicplay-list-container">
+  <p>MUSIC PLAYLIST</p>
 
-  <input [(ngModel)]="newSong" placeholder="Enter song name" />
-  <button (click)="addSong()">Add Song</button>
+  <div class="add-music">
+    <input [(ngModel)]="newMusic" placeholder="Enter music name" />
+    <button (click)="addMusic()">Add Music</button>
+  </div>
 
   <h2>My Playlist</h2>
   <ul>
-    <li *ngFor="let item of playlist; let i = index">
-      {{ item }}
+    <li *ngFor="let music of getMusicPlaylist(); let i = index">
+      {{ music }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
