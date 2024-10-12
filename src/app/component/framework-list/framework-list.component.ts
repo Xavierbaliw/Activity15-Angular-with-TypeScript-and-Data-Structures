@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FrameworkListService} from "../../services/framework-list.service";
 
 @Component({
   selector: 'app-framework-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './framework-list.component.css'
 })
 export class FrameworkListComponent {
-  frameworks: string[] = ['Angular'];
-  newFramework: string = '';
+  newTool: string = '';
 
-  addFramework() {
-    if (this.newFramework) {
-      this.frameworks.push(this.newFramework);
-      this.newFramework = '';
+  constructor(private frameworkToolsListService: FrameworkListService) {}
+
+  addTool() {
+    if (this.newTool.trim()) {
+      this.frameworkToolsListService.addTool(this.newTool.trim());
+      this.newTool = '';
     }
   }
 
-  removeFramework(index: number) {
-    this.frameworks.splice(index, 1);
+  getTools(): string[] {
+    return this.frameworkToolsListService.getTools();
+  }
+
+  removeItem(index: number) {
+    this.frameworkToolsListService.removeTool(index);
   }
 }

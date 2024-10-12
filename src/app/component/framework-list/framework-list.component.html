@@ -1,17 +1,16 @@
-<div>
-  <h1>Web Development Frameworks</h1>
+<div class="framework-tools-list-container">
+  <p>FRAMEWORK TOOLS LIST</p>
 
-  <input
-    type="text"
-    [(ngModel)]="newFramework"
-    placeholder="Add new framework"
-  />
-  <button (click)="addFramework()">Add</button>
+  <div class="add-tool">
+    <input [(ngModel)]="newTool" placeholder="Enter framework/tool name" />
+    <button (click)="addTool()">Add Tool</button>
+  </div>
 
+  <h2>TOOLS NAME : </h2>
   <ul>
-    <li *ngFor="let framework of frameworks; let i = index">
-      {{ framework }}
-      <button (click)="removeFramework(i)">Remove</button>
+    <li *ngFor="let tool of getTools(); let i = index">
+      {{ tool }}
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>
