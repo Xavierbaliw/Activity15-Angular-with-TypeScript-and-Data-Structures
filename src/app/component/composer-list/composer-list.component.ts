@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ComposerListService} from "../../services/composer-list.service";
 
 @Component({
   selector: 'app-composer-list',
@@ -6,17 +7,33 @@ import { Component } from '@angular/core';
   styleUrl: './composer-list.component.css'
 })
 export class ComposerListComponent {
-  composers: string[] = ['Daryl Ong'];
   newComposer: string = '';
+  editIndex: number | null = null;
 
-  addComposer(): void {
-    if (this.newComposer) {
-      this.composers.push(this.newComposer);
-      this.newComposer = ''; // Clear the input
+  constructor(private composerListService: ComposerListService) {}
+
+  addComposer() {
+    if (this.editIndex !== null) {
+      this.composerListService.updateComposer(this.editIndex, this.newComposer.trim());
+      this.editIndex = null;
+    } else {
+      if (this.newComposer.trim()) {
+        this.composerListService.addComposer(this.newComposer.trim());
+      }
     }
+    this.newComposer = '';
   }
 
-  removeComposer(index: number): void {
-    this.composers.splice(index, 1);
+  getComposers(): string[] {
+    return this.composerListService.getComposers();
+  }
+
+  removeItem(index: number) {
+    this.composerListService.removeComposer(index);
+  }
+
+  editComposer(index: number) {
+    this.newComposer = this.composerListService.getComposers()[index];
+    this.editIndex = index;
   }
 }
