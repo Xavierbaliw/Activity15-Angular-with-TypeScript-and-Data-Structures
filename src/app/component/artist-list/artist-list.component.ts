@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ArtistListService} from "../../services/artist-list.service";
 
 @Component({
   selector: 'app-artist-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './artist-list.component.css'
 })
 export class ArtistListComponent {
-  artists: string[] = ['Miguel Tan Felix'];
   newArtist: string = '';
 
+  constructor(private artistListService: ArtistListService) {}
+
   addArtist() {
-    if (this.newArtist) {
-      this.artists.push(this.newArtist);
+    if (this.newArtist.trim()) {
+      this.artistListService.addArtist(this.newArtist.trim());
       this.newArtist = '';
     }
   }
 
-  removeArtist(index: number) {
-    this.artists.splice(index, 1);
+  getArtists(): string[] {
+    return this.artistListService.getArtists();
+  }
+
+  removeItem(index: number) {
+    this.artistListService.removeArtist(index);
   }
 }
