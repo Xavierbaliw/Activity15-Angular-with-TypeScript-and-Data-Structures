@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ProductListService} from "../../services/product-list.service";
 
 @Component({
   selector: 'app-product-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
-  products: string[] = ['Keyboard', 'Mouse', 'Dongle'];
   newProduct: string = '';
 
+  constructor(private productListService: ProductListService) {}
 
-    addProduct() {
-      if (this.newProduct) {
-        this.products.push(this.newProduct);
-        this.newProduct = '';
-      }
+  addProduct() {
+    if (this.newProduct.trim()) {
+      this.productListService.addProduct(this.newProduct.trim());
+      this.newProduct = '';
     }
-    removeItem(index: number) {
-      this.products.splice(index, 1);
+  }
+
+  getProducts(): string[] {
+    return this.productListService.getProducts();
+  }
+
+  removeItem(index: number) {
+    this.productListService.removeProduct(index);
   }
 }

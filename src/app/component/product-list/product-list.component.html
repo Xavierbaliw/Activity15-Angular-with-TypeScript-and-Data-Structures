@@ -1,16 +1,14 @@
-<div>
-  <h1>Product List</h1>
-  <input
-    [(ngModel)]="newProduct"
-    placeholder="Add new product"
-    type="text"
-  />
-  <button (click)="addProduct()">Add Product</button>
+<div class="product-list-container">
+  <p>PRODUCT LIST</p>
 
-  <h2>Available Products:</h2>
+  <div class="add-product">
+    <input [(ngModel)]="newProduct" placeholder="Enter product name" />
+    <button (click)="addProduct()">Add Product</button>
+  </div>
+
   <ul>
-    <li *ngFor="let item of products; let i = index">
-      {{ item }}
+    <li *ngFor="let product of getProducts(); let i = index">
+      {{ product }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
