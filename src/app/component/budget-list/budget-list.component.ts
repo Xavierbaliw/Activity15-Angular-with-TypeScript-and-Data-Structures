@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {BudgetListService} from "../../services/budget-list.service";
 
 @Component({
   selector: 'app-budget-list',
@@ -6,33 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './budget-list.component.css'
 })
 export class BudgetListComponent {
-  itemName: string = '';
-  itemAmount: number | null = null;
+  newBudgetItem: { name: string; amount: number } = { name: '', amount: 0 };
 
-
-  budgetList: { name: string; amount: number }[] = [
-    { name: 'Shopping', amount: 500 },
-  ];
+  constructor(private budgetService: BudgetListService) {}
 
   addBudgetItem() {
-    if (this.itemName.trim() && this.itemAmount !== null) {
-      const newItem = {
-        name: this.itemName.trim(),
-        amount: this.itemAmount,
-      };
-      this.budgetList.push(newItem);
-
-      this.itemName = '';
-      this.itemAmount = null;
-    } else {
-      console.log('Please enter both item name and amount.');
+    if (this.newBudgetItem.name.trim() && this.newBudgetItem.amount > 0) {
+      this.budgetService.addBudgetItem(this.newBudgetItem);
+      this.newBudgetItem = { name: '', amount: 0 };
     }
   }
 
-  removeBudgetItem(item: { name: string; amount: number }) {
-    const index = this.budgetList.indexOf(item);
-    if (index > -1) {
-      this.budgetList.splice(index, 1);
-    }
+  getBudgetItems(): { name: string; amount: number }[] {
+    return this.budgetService.getBudgetItems();
+  }
+
+  removeItem(index: number) {
+    this.budgetService.removeBudgetItem(index);
   }
 }

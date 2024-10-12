@@ -1,15 +1,16 @@
-<div class="budget-list-container">
-  <H2>Budget List:</H2>
+<div class="budget-list">
+  <h1>Budget List</h1>
+  <div class="add-budget-item">
+    <input [(ngModel)]="newBudgetItem.name" placeholder="Enter purpose" />
+    <input [(ngModel)]="newBudgetItem.amount" placeholder="Enter amount" type="number" />
+    <button (click)="addBudgetItem()">Add Budget Item</button>
+  </div>
 
-  <input type="text" [(ngModel)]="itemName" placeholder="Enter budget item name" />
-  <br>
-  <input type="number" [(ngModel)]="itemAmount" placeholder="Enter amount" />
-  <button (click)="addBudgetItem()">Add Budget Item</button>
-
+  <h2>Budget Home:</h2>
   <ul>
-    <li *ngFor="let item of budgetList">
-      {{ item.name }} - ${{ item.amount }}
-      <button (click)="removeBudgetItem(item)">Remove</button>
+    <li *ngFor="let item of getBudgetItems(); let i = index">
+      {{ item.name }} - Amount: ${{ item.amount }}
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>
