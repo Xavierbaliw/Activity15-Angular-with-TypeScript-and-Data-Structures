@@ -1,13 +1,16 @@
-<div>
-  <h2>Laptop List</h2>
+<div class="laptop-list-container">
+  <p>LAPTOP LIST</p>
 
-  <input [(ngModel)]="newLaptop" placeholder="Add new laptop model" />
-  <button (click)="addLaptop()">Add Laptop</button>
+  <div class="add-laptop">
+    <input [(ngModel)]="newLaptop" placeholder="Enter laptop brand or component" />
+    <button (click)="addLaptop()">Add Laptop</button>
+  </div>
 
+  <h2>BRAND :</h2>
   <ul>
-    <li *ngFor="let laptop of laptops; let i = index">
+    <li *ngFor="let laptop of getLaptops(); let i = index">
       {{ laptop }}
-      <button (click)="removeLaptop(i)">Remove</button>
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>
