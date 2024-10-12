@@ -1,15 +1,16 @@
-<div style="text-align:center">
-  <h1>{{ title }}</h1>
-
-  <div>
-    <input [(ngModel)]="newDate" placeholder="Enter tour date" />
-    <button (click)="addTourDate()">Add Tour Date</button>
+<div class="tour-list">
+  <h1>Tour List</h1>
+  <div class="add-tour">
+    <input [(ngModel)]="newTour.name" placeholder="Enter tour name" />
+    <input [(ngModel)]="newTour.date" placeholder="Enter tour date (YYYY-MM-DD)" />
+    <button (click)="addTour()">Add Tour</button>
   </div>
 
+  <h2>Tours on 2025-02-25:</h2>
   <ul>
-    <li *ngFor="let date of tourDates; let i = index">
-      {{ date }}
-      <button (click)="removeTourDate(i)">Remove</button>
+    <li *ngFor="let tour of getTours(); let i = index">
+      {{ tour.name }} - On date {{ tour.date }}
+      <button (click)="removeTour(i)">Remove</button>
     </li>
   </ul>
 </div>

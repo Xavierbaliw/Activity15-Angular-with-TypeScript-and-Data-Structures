@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {TourListService} from "../../services/tour-list.service";
 
 @Component({
   selector: 'app-tour-list',
@@ -6,18 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './tour-list.component.css'
 })
 export class TourListComponent {
-  title = 'TV Tour List';
-  tourDates: string[] = ['2024-10-15 - Quezon'];
-  newDate: string = '';
+  newTour: { name: string; date: string } = { name: '', date: '' };
 
-  addTourDate(): void {
-    if (this.newDate) {
-      this.tourDates.push(this.newDate);
-      this.newDate = '';
+  constructor(private tourListService: TourListService) {}
+
+  addTour() {
+    if (this.newTour.name.trim() && this.newTour.date.trim()) {
+      this.tourListService.addTour(this.newTour);
+      this.newTour = { name: '', date: '' };
     }
   }
 
-  removeTourDate(index: number): void {
-    this.tourDates.splice(index, 1);
+  getTours(): { name: string; date: string }[] {
+    return this.tourListService.getTours();
+  }
+
+  removeTour(index: number) {
+    this.tourListService.removeTour(index);
   }
 }
