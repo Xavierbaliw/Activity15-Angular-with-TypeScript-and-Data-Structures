@@ -1,13 +1,16 @@
-<div class="lecture-list">
-  <h2>Lecture List</h2>
+<div class="lecture-list-container">
+  <p>LECTURE LIST</p>
 
-  <input [(ngModel)]="newLecture" placeholder="Add new lecture" />
-  <button (click)="addLecture()">Add Lecture</button>
+  <div class="add-lecture">
+    <input [(ngModel)]="newLecture" placeholder="Enter lecture name" />
+    <button (click)="addLecture()">Add Lecture</button>
+  </div>
 
+  <h2>ABOUT :</h2>
   <ul>
-    <li *ngFor="let lecture of lectures; let i = index">
-      {{lecture}}
-      <button (click)="removeLecture(i)">Remove</button>
+    <li *ngFor="let lecture of getLectures(); let i = index">
+      {{ lecture }}
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>

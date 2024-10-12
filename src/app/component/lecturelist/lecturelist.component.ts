@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LecturelistService} from "../../services/lecturelist.service";
 
 @Component({
   selector: 'app-lecturelist',
@@ -6,18 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './lecturelist.component.css'
 })
 export class LecturelistComponent {
-  lectures: string[] = ['Introduction to Angular', 'Understanding TypeScript', 'Advanced Angular Concepts'];
-
   newLecture: string = '';
 
+  constructor(private lectureListService: LecturelistService) {}
+
   addLecture() {
-    if (this.newLecture) {
-      this.lectures.push(this.newLecture);
+    if (this.newLecture.trim()) {
+      this.lectureListService.addLecture(this.newLecture.trim());
       this.newLecture = '';
     }
   }
 
-  removeLecture(index: number) {
-    this.lectures.splice(index, 1);
+  getLectures(): string[] {
+    return this.lectureListService.getLectures();
+  }
+
+  removeItem(index: number) {
+    this.lectureListService.removeLecture(index);
   }
 }
