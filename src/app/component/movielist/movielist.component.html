@@ -1,13 +1,15 @@
 <div class="movie-list">
   <h1>Movie List</h1>
-
-  <input type="text" [(ngModel)]="newMovie" placeholder="Enter movie title" />
+  <div class="add-movie">
+    <input [(ngModel)]="newMovie.name" placeholder="Enter movie name" />
+  <input [(ngModel)]="newMovie.director" placeholder="Enter director name" />
   <button (click)="addMovie()">Add Movie</button>
+  </div>
 
-  <h2>Current Movies:</h2>
+  <h2>Movies and the Director:</h2>
   <ul>
-    <li *ngFor="let item of movies; let i = index">
-      {{ item }}
+    <li *ngFor="let movie of getMovies(); let i = index">
+      {{ movie.name }} - Directed by {{ movie.director}}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
