@@ -16,11 +16,6 @@
   text-align: center;
 }
 
-.framework-tools-list-container h2 {
-  text-align: center;
-  margin: 15px 0;
-}
-
 .framework-tools-list-container .add-tool {
   display: flex;
   margin-bottom: 15px;
@@ -47,6 +42,11 @@
 
 .framework-tools-list-container button:hover {
   background-color: #0056b3;
+}
+
+.framework-tools-list-container h2 {
+  text-align: center;
+  margin: 20px 0;
 }
 
 .framework-tools-list-container ul {

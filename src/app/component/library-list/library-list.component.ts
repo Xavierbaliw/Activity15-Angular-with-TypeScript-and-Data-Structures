@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LibraryToolListService} from "../../services/library-list.service";
 
 @Component({
   selector: 'app-library-list',
@@ -6,19 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './library-list.component.css'
 })
 export class LibraryListComponent {
-  libraries: string[] = ['Netflix', 'Bili-bili'];
-  newLibrary: string = '';
+  newTool: string = '';
 
-  // Add a new library to the list
-  addLibrary() {
-    if (this.newLibrary.trim() === '') {
-      return;
+  constructor(private libraryToolListService: LibraryToolListService) {}
+
+  addTool() {
+    if (this.newTool.trim()) {
+      this.libraryToolListService.addTool(this.newTool.trim());
+      this.newTool = '';
     }
-    this.libraries.push(this.newLibrary);
-    this.newLibrary = '';
   }
 
-  removeLibrary(index: number) {
-    this.libraries.splice(index, 1);
+  getTools(): string[] {
+    return this.libraryToolListService.getTools();
+  }
+
+  removeItem(index: number) {
+    this.libraryToolListService.removeTool(index);
   }
 }

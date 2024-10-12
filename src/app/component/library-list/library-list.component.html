@@ -1,18 +1,16 @@
-<div class="container">
-  <h2>TV Library List</h2>
-  <div>
-    <input
-      type="text"
-      [(ngModel)]="newLibrary"
-      placeholder="Enter a new library"
-    />
-    <button (click)="addLibrary()">Add Library</button>
+<div class="library-tools-list-container">
+  <p>LIBRARY TOOLS LIST</p>
+
+  <div class="add-tool">
+    <input [(ngModel)]="newTool" placeholder="Enter tool name " />
+    <button (click)="addTool()">Add Tool</button>
   </div>
 
+  <h2>TOOLS NAME : </h2>
   <ul>
-    <li *ngFor="let library of libraries; let i = index">
-      {{ library }}
-      <button (click)="removeLibrary(i)">Remove</button>
+    <li *ngFor="let tool of getTools(); let i = index">
+      {{ tool }}
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>
