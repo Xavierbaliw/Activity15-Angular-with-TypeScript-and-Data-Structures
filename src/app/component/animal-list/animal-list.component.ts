@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AnimalListService} from "../../services/animal-list.service";
 
 @Component({
   selector: 'app-animal-list',
@@ -6,16 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './animal-list.component.css'
 })
 export class AnimalListComponent {
-  animals: string[] = ['Lion', 'Tiger', 'Monkey', 'Horse', 'Puma'];
   newAnimal: string = '';
 
+  constructor(private animalListService: AnimalListService) {}
+
   addAnimal() {
-    if (this.newAnimal) {
-      this.animals.push(this.newAnimal);
+    if (this.newAnimal.trim()) {
+      this.animalListService.addAnimal(this.newAnimal.trim());
       this.newAnimal = '';
     }
   }
+
+  getAnimals(): string[] {
+    return this.animalListService.getAnimals();
+  }
+
   removeItem(index: number) {
-    this.animals.splice(index, 1);
+    this.animalListService.removeAnimal(index);
   }
 }

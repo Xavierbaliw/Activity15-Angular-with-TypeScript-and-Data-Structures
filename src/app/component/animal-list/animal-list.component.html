@@ -1,18 +1,16 @@
-<div class="container">
-  <h1>Animal List</h1>
+<div class="animal-list-container">
+  <p>ANIMAL LIST</p>
+
+  <div class="add-animal">
+    <input [(ngModel)]="newAnimal" placeholder="Enter animal name" />
+    <button (click)="addAnimal()">Add Animal</button>
+  </div>
 
   <ul>
-    <li *ngFor="let animal of animals">{{ animal }}</li>
-  </ul>
-
-  <input [(ngModel)]="newAnimal" placeholder="Enter animal name" />
-  <button (click)="addAnimal()">Add Animal</button>
-
-  <ul>
-    <li *ngFor="let item of animals; let i = index">
-      {{ item }}
+    <li *ngFor="let animal of getAnimals(); let i = index">
+      {{ animal }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
-
 </div>
+
