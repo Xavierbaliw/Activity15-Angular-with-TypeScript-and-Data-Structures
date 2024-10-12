@@ -1,14 +1,15 @@
-<div>
-  <h2>Tool List</h2>
+<div class="tool-list-container">
+  <p>TOOL LIST</p>
 
-  <input type="text" [(ngModel)]="newTool" placeholder="Enter a new tool"/>
-  <button (click)="addTool()">Add Tool</button>
+  <div class="add-tool">
+    <input [(ngModel)]="newTool" placeholder="Enter tool name" />
+    <button (click)="addTool()">Add Tool</button>
+  </div>
 
   <ul>
-    <li *ngFor="let item of tools; let i = index">
-      {{ item }}
+    <li *ngFor="let tool of getTools(); let i = index">
+      {{ tool }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
-
 </div>
