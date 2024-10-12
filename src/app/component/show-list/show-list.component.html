@@ -1,13 +1,16 @@
-<div class="tv-show-list">
-  <h1>TV Show List</h1>
+<div class="show-list-container">
+  <p>SHOW LIST</p>
 
-  <input type="text" [(ngModel)]="newShow" placeholder="Add new show" />
-  <button (click)="addShow()">Add Show</button>
+  <div class="add-show">
+    <input [(ngModel)]="newShow" placeholder="Enter show name" />
+    <button (click)="addShow()">Add Show</button>
+  </div>
 
+  <h2> TV SHOW :</h2>
   <ul>
-    <li *ngFor="let show of tvShows; let i = index">
+    <li *ngFor="let show of getShows(); let i = index">
       {{ show }}
-      <button (click)="removeShow(i)">Remove</button>
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>

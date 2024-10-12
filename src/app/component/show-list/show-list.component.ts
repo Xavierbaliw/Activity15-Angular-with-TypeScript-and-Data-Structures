@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ShowListService} from "../../services/show-list.service";
 
 @Component({
   selector: 'app-show-list',
@@ -6,26 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './show-list.component.css'
 })
 export class ShowListComponent {
-  tvShows: string[] = [
-    'Channel 2',
-    'Channel 5',
-    'Channel 7',
-    'Channel 11',
-    'Channel 23'
-  ];
-
   newShow: string = '';
 
+  constructor(private showListService: ShowListService) {}
+
   addShow() {
-    if (this.newShow.trim() !== '') {
-      this.tvShows.push(this.newShow.trim());
+    if (this.newShow.trim()) {
+      this.showListService.addShow(this.newShow.trim());
       this.newShow = '';
-    } else {
-      alert('Please enter a valid show name.');
     }
   }
 
-  removeShow(index: number) {
-    this.tvShows.splice(index, 1);
+  getShows(): string[] {
+    return this.showListService.getShows();
+  }
+
+  removeItem(index: number) {
+    this.showListService.removeShow(index);
   }
 }
