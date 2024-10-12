@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AccessoryListService} from "../../services/accessory-list.service";
 
 @Component({
   selector: 'app-accessory-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './accessory-list.component.css'
 })
 export class AccessoryListComponent {
-  accessories: string[] = ['Phone Case', 'Screen Protector', 'Wireless Charger', 'Earbuds'];
   newAccessory: string = '';
+
+  constructor(private accessoryListService: AccessoryListService) {}
 
   addAccessory() {
     if (this.newAccessory.trim()) {
-      this.accessories.push(this.newAccessory);
+      this.accessoryListService.addAccessory(this.newAccessory.trim());
       this.newAccessory = '';
     }
   }
 
-  removeAccessory(index: number) {
-    this.accessories.splice(index, 1);
+  getAccessories(): string[] {
+    return this.accessoryListService.getAccessories();
+  }
+
+  removeItem(index: number) {
+    this.accessoryListService.removeAccessory(index);
   }
 }
