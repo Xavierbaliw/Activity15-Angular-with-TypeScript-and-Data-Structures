@@ -1,13 +1,16 @@
-<div>
-  <h2>TV Podcast List</h2>
+<div class="podcast-list-container">
+  <p>PODCAST LIST</p>
 
-  <input type="text" [(ngModel)]="newPodcast" placeholder="Add new podcast episode" />
-  <button (click)="addPodcast()">Add Podcast</button>
+  <div class="add-podcast">
+    <input [(ngModel)]="newPodcast" placeholder="Enter podcast episode" />
+    <button (click)="addPodcast()">Add Podcast</button>
+  </div>
 
+  <h2>TV PODCAST</h2>
   <ul>
-    <li *ngFor="let podcast of podcasts; let i = index">
+    <li *ngFor="let podcast of getPodcasts(); let i = index">
       {{ podcast }}
-      <button (click)="removePodcast(i)">Remove</button>
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>
