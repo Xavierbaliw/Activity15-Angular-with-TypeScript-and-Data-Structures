@@ -1,12 +1,15 @@
-<div class="contact-list">
-  <h2>Phone Contact List</h2>
-  <input [(ngModel)]="contactName" placeholder="Enter contact name" />
-  <button (click)="addContact()">Add Contact</button>
+<div class="phone-contact-list-container">
+  <p>PHONE CONTACT LIST</p>
+
+  <div class="add-contact">
+    <input [(ngModel)]="newContact" placeholder="Enter phone number - Name" />
+    <button (click)="addContact()">Add Contact</button>
+  </div>
 
   <ul>
-    <li *ngFor="let contact of contacts; let i = index">
+    <li *ngFor="let contact of getContacts(); let i = index">
       {{ contact }}
-      <button (click)="removeContact(i)">Remove</button>
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
 </div>
