@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GameListService} from "../../services/game-list.service";
 
 @Component({
   selector: 'app-game-list',
@@ -6,25 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './game-list.component.css'
 })
 export class GameListComponent {
-  games: string[] = [
-    'Call of Duty Mobile',
-    'Warzone PC',
-    'Mobile Legend',
-    'Clash of Clan',
-    'Arena of Valor'
-  ];
-
   newGame: string = '';
 
-  addGame(): void {
+  constructor(private gameListService: GameListService) {}
+
+  addGame() {
     if (this.newGame.trim()) {
-      this.games.push(this.newGame);
+      this.gameListService.addGame(this.newGame.trim());
       this.newGame = '';
-    } else {
-      alert('Please enter a game title.');
     }
   }
+
+  getGames(): string[] {
+    return this.gameListService.getGames();
+  }
+
   removeItem(index: number) {
-    this.games.splice(index, 1);
+    this.gameListService.removeGame(index);
   }
 }

@@ -1,12 +1,14 @@
-<div>
-  <h1>Game List</h1>
+<div class="game-list-container">
+  <p>GAME LIST</p>
 
-  <input type="text" [(ngModel)]="newGame" placeholder="Enter a new game title">
-  <button (click)="addGame()">Add Game</button>
+  <div class="add-game">
+    <input [(ngModel)]="newGame" placeholder="Enter game name" />
+    <button (click)="addGame()">Add Game</button>
+  </div>
 
   <ul>
-    <li *ngFor="let item of games; let i = index">
-      {{ item }}
+    <li *ngFor="let game of getGames(); let i = index">
+      {{ game }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
