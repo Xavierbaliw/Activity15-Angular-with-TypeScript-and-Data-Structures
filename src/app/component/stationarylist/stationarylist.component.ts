@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {StationarylistService} from "../../services/stationarylist.service";
 
 @Component({
   selector: 'app-stationarylist',
@@ -6,18 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './stationarylist.component.css'
 })
 export class StationarylistComponent {
-  stationeryList: string[] = ['Pencil', 'Notebook', 'Eraser'];
+  newStationary: string = '';
 
-  newItem: string = '';
+  constructor(private stationaryListService: StationarylistService) {}
 
-  addItem(): void {
-    if (this.newItem.trim()) {
-      this.stationeryList.push(this.newItem.trim());
-      this.newItem = '';
+  addStationary() {
+    if (this.newStationary.trim()) {
+      this.stationaryListService.addStationary(this.newStationary.trim());
+      this.newStationary = '';
     }
   }
 
-  removeItem(index: number): void {
-    this.stationeryList.splice(index, 1);
+  getStationary(): string[] {
+    return this.stationaryListService.getStationary();
+  }
+
+  removeItem(index: number) {
+    this.stationaryListService.removeStationary(index);
   }
 }
