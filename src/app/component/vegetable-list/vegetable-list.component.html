@@ -1,16 +1,15 @@
-<div class="container">
-  <h2>Vegetable List</h2>
+<div class="vegetable-list-container">
+  <p>VEGETABLE LIST</p>
+
+  <div class="add-vegetable">
+    <input [(ngModel)]="newVegetable" placeholder="Enter vegetable name" />
+    <button (click)="addVegetable()">Add Vegetable</button>
+  </div>
+
   <ul>
-    <li *ngFor="let item of vegetables; let i = index">
-      {{ item }}
+    <li *ngFor="let vegetable of getVegetables(); let i = index">
+      {{ vegetable }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
-
-  <input
-    type="text"
-    [(ngModel)]="newVegetable"
-    placeholder="Add a new vegetable"
-  />
-  <button (click)="addVegetable()">Add Vegetable</button>
 </div>
