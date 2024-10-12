@@ -1,12 +1,16 @@
 <div class="presentation-list">
-  <h2>TV Presentation Topics</h2>
-  <input [(ngModel)]="newTopic" placeholder="Add new topic" />
-  <button (click)="addTopic()">Add Topic</button>
+  <h1>Presentation List</h1>
+  <div class="add-presentation">
+    <input [(ngModel)]="newPresentation.topic" placeholder="Topic" />
+    <input [(ngModel)]="newPresentation.presenter" placeholder="Presenter Name" />
+    <button (click)="addPresentation()">Add Presentation</button>
+  </div>
+
+  <h2>Presentations and Presenters:</h2>
   <ul>
-    <li *ngFor="let topic of presentationTopics; let i = index">
-      {{ i + 1 }}. {{ topic }}
-      <button (click)="removeTopic(i)">Remove</button>
+    <li *ngFor="let presentation of getPresentations(); let i = index">
+      {{ presentation.topic }} - Presented by {{ presentation.presenter }}
+      <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>
-
 </div>

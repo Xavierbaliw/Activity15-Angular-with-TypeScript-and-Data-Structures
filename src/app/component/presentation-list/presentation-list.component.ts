@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {PresentationListService} from "../../services/presentation-list.service";
 
 @Component({
   selector: 'app-presentation-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './presentation-list.component.css'
 })
 export class PresentationListComponent {
-  presentationTopics: string[] = ["Angular RxJs", "Guide to Angular Directives", "Angular Services"];
-  newTopic: string = '';
+  newPresentation: { topic: string; presenter: string } = { topic: '', presenter: '' };
 
-  addTopic() {
-    if (this.newTopic.trim()) {
-      this.presentationTopics.push(this.newTopic.trim());
-      this.newTopic = '';
+  constructor(private presentationService: PresentationListService) {}
+
+  addPresentation() {
+    if (this.newPresentation.topic.trim() && this.newPresentation.presenter.trim()) {
+      this.presentationService.addPresentation(this.newPresentation);
+      this.newPresentation = { topic: '', presenter: '' };
     }
   }
 
-  removeTopic(index: number) {
-    this.presentationTopics.splice(index, 1);
+  getPresentations(): { topic: string; presenter: string }[] {
+    return this.presentationService.getPresentations();
+  }
+
+  removeItem(index: number) {
+    this.presentationService.removePresentation(index);
   }
 }
