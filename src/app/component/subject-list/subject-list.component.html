@@ -1,17 +1,14 @@
 <div class="subject-list-container">
-  <h2>Subject List</h2>
+  <p>SUBJECT LIST</p>
 
-  <input
-    type="text"
-    [(ngModel)]="newSubject"
-    placeholder="Enter a new subject"
-    (keyup.enter)="addSubject()"
-  />
-  <button (click)="addSubject()">Add Subject</button>
+  <div class="add-subject">
+    <input [(ngModel)]="newSubject" placeholder="Enter subject name" />
+    <button (click)="addSubject()">Add Subject</button>
+  </div>
 
   <ul>
-    <li *ngFor="let item of subjects; let i = index">
-      {{ item }}
+    <li *ngFor="let subject of getSubjects(); let i = index">
+      {{ subject }}
       <button (click)="removeItem(i)">Remove</button>
     </li>
   </ul>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SubjectListService} from "../../services/subject-list.service";
 
 @Component({
   selector: 'app-subject-list',
@@ -6,18 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './subject-list.component.css'
 })
 export class SubjectListComponent {
-  subjects: string[] = ['SIA2', 'SA101', 'GE10'];
   newSubject: string = '';
 
+  constructor(private subjectListService: SubjectListService) {}
 
-  addSubject(): void {
+  addSubject() {
     if (this.newSubject.trim()) {
-      this.subjects.push(this.newSubject.trim());
+      this.subjectListService.addSubject(this.newSubject.trim());
       this.newSubject = '';
     }
   }
 
+  getSubjects(): string[] {
+    return this.subjectListService.getSubjects();
+  }
+
   removeItem(index: number) {
-    this.subjects.splice(index, 1);
+    this.subjectListService.removeSubject(index);
   }
 }
