@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ComputerhardwareListService} from "../../services/computerhardware-list.service";
 
 @Component({
   selector: 'app-computerhardware-list',
@@ -6,17 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './computerhardware-list.component.css'
 })
 export class ComputerhardwareListComponent {
-  hardwareComponents: string[] = ['CPU', 'GPU', 'RAM', 'Motherboard'];
-  newComponent: string = '';
+  newHardware: string = '';
 
-  addComponent(): void {
-    if (this.newComponent) {
-      this.hardwareComponents.push(this.newComponent);
-      this.newComponent = '';
+  constructor(private hardwareListService: ComputerhardwareListService) {}
+
+  addHardware() {
+    if (this.newHardware.trim()) {
+      this.hardwareListService.addHardware(this.newHardware.trim());
+      this.newHardware = '';
     }
   }
 
-  removeComponent(index: number): void {
-    this.hardwareComponents.splice(index, 1);
+  getHardwares(): string[] {
+    return this.hardwareListService.getHardwares();
+  }
+
+  removeItem(index: number) {
+    this.hardwareListService.removeHardware(index);
   }
 }
