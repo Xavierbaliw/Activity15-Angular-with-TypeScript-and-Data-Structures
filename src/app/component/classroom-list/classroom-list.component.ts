@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ClassroomListService} from "../../services/classroom-list.service";
 
 @Component({
   selector: 'app-classroom-list',
@@ -6,21 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './classroom-list.component.css'
 })
 export class ClassroomListComponent {
-  students: string[] = [
-    'Avelino, Xavier Zues Osias E.',
-    'Alviar, Renzlyn A.',
-  ];
+  newClassroom: string = '';
 
-  newStudent: string = '';
+  constructor(private classroomListService: ClassroomListService) {}
 
-  addStudent() {
-    if (this.newStudent.trim()) {
-      this.students.push(this.newStudent.trim());
-      this.newStudent = '';
-
+  addClassroom() {
+    if (this.newClassroom.trim()) {
+      this.classroomListService.addClassroom(this.newClassroom.trim());
+      this.newClassroom = '';
     }
   }
-  removeStudent(index: number) {
-    this.students.splice(index, 1);
+
+  getClassrooms(): string[] {
+    return this.classroomListService.getClassrooms();
+  }
+
+  removeItem(index: number) {
+    this.classroomListService.removeClassroom(index);
   }
 }
